@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Homepage</title>
+</head>
+<body>
+    <h2>Admin Homepage</h2>
+    <form method="POST" action="/admin/modify">
+        <label>Action:</label>
+        <select name="action">
+            <option value="add">Add</option>
+            <option value="edit">Edit</option>
+            <option value="delete">Delete</option>
+        </select><br>
+        <label>ID (for edit/delete):</label>
+        <input type="text" name="id" required><br>
+        <label>Data Entry (for add/edit):</label>
+        <input type="text" name="data_entry" required><br>
+        <button type="submit">Submit</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(row => { %>
+                <tr>
+                    <td><%= row.id %></td>
+                    <td><%= row.data_entry %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/logout">Logout</a>
+</body>
+</html>
